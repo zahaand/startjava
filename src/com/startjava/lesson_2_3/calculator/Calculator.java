@@ -1,7 +1,7 @@
-package com.startjava.lesson_2_3.calcucator;
+package com.startjava.lesson_2_3.calculator;
 
 public class Calculator {
-    private int firstNumber;
+private int firstNumber;
     private int secondNumber;
     private char operation;
 

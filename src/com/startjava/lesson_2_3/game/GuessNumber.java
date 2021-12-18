@@ -14,7 +14,7 @@ public class GuessNumber {
     }
 
     public void play() {
-        int randomNumber = random.nextInt(101);
+        int randomNumber = random.nextInt(100 + 1);
         Scanner scanner = new Scanner(System.in);
         int number1;
         int number2;
