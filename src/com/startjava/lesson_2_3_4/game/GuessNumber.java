@@ -8,7 +8,7 @@ public class GuessNumber {
     private final Player player1;
     private final Player player2;
     private int randomNumber;
-    boolean winner;
+    private boolean winner;
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
 
