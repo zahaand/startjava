@@ -1,23 +1,28 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    String[] strings = new String[3];
+    private String[] strings = new String[3];
 
-    static int calculate(String[] strings) {
+    public void setStrings(String[] strings) {
+        this.strings = strings;
+    }
+
+    public int calculate() {
         int number1 = Integer.parseInt(strings[0]);
         int number2 = Integer.parseInt(strings[2]);
         String operation = strings[1];
-        int answer = 0;
 
-        switch (operation) {
-            case "+" -> answer = number1 + number2;
-            case "-" -> answer = number1 - number2;
-            case "*" -> answer = number1 * number2;
-            case "/" -> answer = number1 / number2;
-            case "^" -> answer = (int) Math.pow(number1, number2);
-            case "%" -> answer = number1 % number2;
-            default -> System.out.println("Incorrect arithmetic operation!");
-        }
-        return answer;
+        return switch (operation) {
+            case "+" -> number1 + number2;
+            case "-" -> number1 - number2;
+            case "*" -> number1 * number2;
+            case "/" -> number1 / number2;
+            case "^" -> (int) Math.pow(number1, number2);
+            case "%" -> number1 % number2;
+            default -> {
+                System.out.println("Incorrect arithmetic operation!");
+                yield 0;
+            }
+        };
     }
 }
