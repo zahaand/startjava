@@ -9,18 +9,11 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         String answer = "yes";
 
-        while(!answer.equalsIgnoreCase("no")) {
-            System.out.println("Введите первое число:");
-            calculator.setFirstNumber(scanner.nextInt());
+        while (!answer.equalsIgnoreCase("no")) {
+            System.out.print("Введите математическое выражение: ");
+            calculator.strings = scanner.nextLine().split(" ");
 
-            System.out.println("Введите знак математической операции:");
-            calculator.setOperation(scanner.next().charAt(0));
-
-            System.out.println("Введите второе число:");
-            calculator.setSecondNumber(scanner.nextInt());
-            scanner.nextLine();
-
-            calculator.calculate();
+            System.out.println(Calculator.calculate(calculator.strings));
 
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
@@ -30,7 +23,6 @@ public class CalculatorTest {
                 }
             } while (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no"));
         }
-
         scanner.close();
     }
 }

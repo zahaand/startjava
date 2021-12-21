@@ -1,52 +1,23 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-private int firstNumber;
-    private int secondNumber;
-    private char operation;
+    String[] strings = new String[3];
 
-    public void setFirstNumber(int firstNumber) {
-        this.firstNumber = firstNumber;
-    }
+    static int calculate(String[] strings) {
+        int number1 = Integer.parseInt(strings[0]);
+        int number2 = Integer.parseInt(strings[2]);
+        String operation = strings[1];
+        int answer = 0;
 
-    public void setSecondNumber(int secondNumber) {
-        this.secondNumber = secondNumber;
-    }
-
-    public void setOperation(char operation) {
-        this.operation = operation;
-    }
-
-    public void calculate() {
-        switch(operation) {
-            case '+':
-                System.out.println(firstNumber + secondNumber);
-                break;
-            case '-':
-                System.out.println(firstNumber - secondNumber);
-                break;
-            case '*':
-                System.out.println(firstNumber * secondNumber);
-                break;
-            case '/':
-                System.out.println(firstNumber / secondNumber);
-                break;
-            case '^':
-                pow();
-                break;
-            case '%':
-                System.out.println(firstNumber % secondNumber);
-                break;
-            default:
-                System.out.println("Incorrect arithmetic operation!\nTry again!");
+        switch (operation) {
+            case "+" -> answer = number1 + number2;
+            case "-" -> answer = number1 - number2;
+            case "*" -> answer = number1 * number2;
+            case "/" -> answer = number1 / number2;
+            case "^" -> answer = (int) Math.pow(number1, number2);
+            case "%" -> answer = number1 % number2;
+            default -> System.out.println("Incorrect arithmetic operation!");
         }
-    }
-
-    private void pow() {
-        int result = 1;
-            for(int i = 0; i < secondNumber; i++) {
-                result *= firstNumber;
-            }
-            System.out.println(result);
+        return answer;
     }
 }
