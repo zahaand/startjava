@@ -24,14 +24,18 @@ public class Player {
     }
 
     public int[] getNumbers() {
-        return Arrays.copyOf(numbers, numbers.length);
+        return Arrays.copyOf(numbers, tryCount);
     }
 
     public int getNumber(int index) {
         return numbers[index];
     }
 
-    public void setNumber(int index, int value) {
-        this.numbers[index] = value;
+    public void setNumber(int index, int number) {
+        numbers[index] = number;
+    }
+
+    public void fill() {
+        Arrays.fill(numbers, 0, tryCount, 0);
     }
 }

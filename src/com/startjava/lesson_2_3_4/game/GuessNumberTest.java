@@ -26,6 +26,5 @@ public class GuessNumberTest {
                 }
             } while(!answer.equals("yes") && !answer.equals("no"));
         }
-        scanner.close();
     }
 }

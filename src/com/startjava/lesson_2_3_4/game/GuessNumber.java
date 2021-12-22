@@ -17,36 +17,40 @@ public class GuessNumber {
     }
 
     public void start() {
-        player1.setTryCount(0);
-        player2.setTryCount(0);
-        randomNumber = random.nextInt(100 + 1);
+        initGame();
         System.out.println("Начало игры! У каждого игрока по 10 попыток!");
 
         for (int i = 0; i < 10; i++) {
-            player1.setTryCount(i + 1);
-            player1.setNumber(i, inputNumber(player1));
-
+            makeMove(player1);
             if (checkNumber(player1)) {
                 break;
-            } else if (i == 9) {
-                System.out.println("У " + player1.getName() + " закончились попытки");
             }
 
-            player2.setTryCount(i + 1);
-            player2.setNumber(i, inputNumber(player2));
-
+            makeMove(player2);
             if (checkNumber(player2)) {
                 break;
-            } else if (i == 9) {
-                System.out.println("У " + player2.getName() + " закончились попытки");
             }
         }
 
         printAllNumbers(player1);
         printAllNumbers(player2);
 
-        Arrays.fill(player1.getNumbers(), 0, player1.getTryCount(), 0);
-        Arrays.fill(player2.getNumbers(), 0, player2.getTryCount(), 0);
+        player1.fill();
+        player2.fill();
+    }
+
+    private void initGame() {
+        player1.setTryCount(0);
+        player2.setTryCount(0);
+        randomNumber = random.nextInt(100 + 1);
+    }
+
+    private void makeMove(Player player) {
+        player.setNumber(player.getTryCount(), inputNumber(player));
+        player.setTryCount(player.getTryCount() + 1);
+        if (player.getTryCount() == 10) {
+            System.out.println("У " + player1.getName() + " закончились попытки");
+        }
     }
 
     private int inputNumber(Player player) {
@@ -67,10 +71,8 @@ public class GuessNumber {
     }
 
     private void printAllNumbers(Player player) {
-        for (int i: player.getNumbers()) {
-            if (i != 0) {
-                System.out.print(i + " ");
-            }
+        for (int i : player.getNumbers()) {
+            System.out.print(i + " ");
         }
         System.out.println("");
     }
