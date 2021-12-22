@@ -1,19 +1,20 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private String[] strings = new String[3];
+    private String[] mathTerms = new String[3];
 
-    public void setStrings(String[] strings) {
-        this.strings = strings;
+    public Calculator(String[] mathTerms) {
+        this.mathTerms = mathTerms;
     }
 
     public int calculate() {
-        int number1 = Integer.parseInt(strings[0]);
-        int number2 = Integer.parseInt(strings[2]);
-        String operation = strings[1];
+        int number1 = Integer.parseInt(mathTerms[0]);
+        int number2 = Integer.parseInt(mathTerms[2]);
+        String operation = mathTerms[1];
 
         return switch (operation) {
             case "+" -> number1 + number2;
+
             case "-" -> number1 - number2;
             case "*" -> number1 * number2;
             case "/" -> number1 / number2;
