@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.game;
 
+import java.util.Arrays;
+
 public class Player {
     private final String name;
     private int tryCount;
@@ -22,14 +24,14 @@ public class Player {
     }
 
     public int[] getNumbers() {
-        return numbers;
+        return Arrays.copyOf(numbers, numbers.length);
     }
 
-    public int getNumbers(int index) {
+    public int getNumber(int index) {
         return numbers[index];
     }
 
-    public void setNumbers(int index, int value) {
+    public void setNumber(int index, int value) {
         this.numbers[index] = value;
     }
 }

@@ -24,18 +24,18 @@ public class GuessNumber {
 
         for (int i = 0; i < 10; i++) {
             player1.setTryCount(i + 1);
-            player1.setNumbers(i, inputNumber(player1));
+            player1.setNumber(i, inputNumber(player1));
 
-            if (checkNumber(player1, i)) {
+            if (checkNumber(player1)) {
                 break;
             } else if (i == 9) {
                 System.out.println("У " + player1.getName() + " закончились попытки");
             }
 
             player2.setTryCount(i + 1);
-            player2.setNumbers(i, inputNumber(player2));
+            player2.setNumber(i, inputNumber(player2));
 
-            if (checkNumber(player2, i)) {
+            if (checkNumber(player2)) {
                 break;
             } else if (i == 9) {
                 System.out.println("У " + player2.getName() + " закончились попытки");
@@ -54,11 +54,11 @@ public class GuessNumber {
         return scanner.nextInt();
     }
 
-    private boolean checkNumber(Player player, int numberIndex) {
-        if (player.getNumbers(numberIndex) == randomNumber) {
+    private boolean checkNumber(Player player) {
+        if (player.getNumber(player.getTryCount() - 1) == randomNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " с " + player.getTryCount() + " попытки");
             return true;
-        } else if (player.getNumbers(numberIndex) > randomNumber) {
+        } else if (player.getNumber(player.getTryCount() - 1) > randomNumber) {
             System.out.println("Данное число больше того, что загадал компьютер");
         } else {
             System.out.println("Данное число меньше того, что загадал компьютер");
@@ -67,9 +67,10 @@ public class GuessNumber {
     }
 
     private void printAllNumbers(Player player) {
-        System.out.print("Варианты ответов игрока " + player.getName() + ": ");
-        for (int i = 0; i < player.getTryCount(); i++) {
-            System.out.print(player.getNumbers(i) + " ");
+        for (int i: player.getNumbers()) {
+            if (i != 0) {
+                System.out.print(i + " ");
+            }
         }
         System.out.println("");
     }
