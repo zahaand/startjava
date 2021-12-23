@@ -31,8 +31,8 @@ public class Player {
         return numbers[tryCount];
     }
 
-    public void setNumber(int index, int number) {
-        numbers[index] = number;
+    public void setNumber(int number) {
+        numbers[tryCount] = number;
     }
 
     public void fill() {

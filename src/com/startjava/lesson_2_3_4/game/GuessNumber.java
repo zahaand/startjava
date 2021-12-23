@@ -46,7 +46,7 @@ public class GuessNumber {
     }
 
     private void makeMove(Player player) {
-        player.setNumber(player.getTryCount(), inputNumber(player));
+        player.setNumber(inputNumber(player));
         player.setTryCount(player.getTryCount() + 1);
         if (player.getTryCount() == 10) {
             System.out.println("У " + player1.getName() + " закончились попытки");
