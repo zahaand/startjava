@@ -28,7 +28,7 @@ public class Player {
     }
 
     public int getNumber() {
-        return numbers[tryCount];
+        return numbers[tryCount - 1];
     }
 
     public void setNumber(int number) {
