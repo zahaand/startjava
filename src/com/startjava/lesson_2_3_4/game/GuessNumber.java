@@ -47,10 +47,6 @@ public class GuessNumber {
 
     private void makeMove(Player player) {
         player.setNumber(inputNumber(player));
-        player.setTryCount(player.getTryCount() + 1);
-        if (player.getTryCount() == 10) {
-            System.out.println("У " + player1.getName() + " закончились попытки");
-        }
     }
 
     private int inputNumber(Player player) {
@@ -66,6 +62,10 @@ public class GuessNumber {
             System.out.println("Данное число больше того, что загадал компьютер");
         } else {
             System.out.println("Данное число меньше того, что загадал компьютер");
+        }
+        player.setTryCount(player.getTryCount() + 1);
+        if (player.getTryCount() == 10) {
+            System.out.println("У " + player1.getName() + " закончились попытки");
         }
         return false;
     }
