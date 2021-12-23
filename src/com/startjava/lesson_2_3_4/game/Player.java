@@ -27,8 +27,8 @@ public class Player {
         return Arrays.copyOf(numbers, tryCount);
     }
 
-    public int getNumber(int index) {
-        return numbers[index];
+    public int getNumber() {
+        return numbers[tryCount];
     }
 
     public void setNumber(int index, int number) {

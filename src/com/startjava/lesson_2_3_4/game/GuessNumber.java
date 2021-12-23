@@ -59,10 +59,10 @@ public class GuessNumber {
     }
 
     private boolean checkNumber(Player player) {
-        if (player.getNumber(player.getTryCount() - 1) == randomNumber) {
+        if (player.getNumber() == randomNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " с " + player.getTryCount() + " попытки");
             return true;
-        } else if (player.getNumber(player.getTryCount() - 1) > randomNumber) {
+        } else if (player.getNumber() > randomNumber) {
             System.out.println("Данное число больше того, что загадал компьютер");
         } else {
             System.out.println("Данное число меньше того, что загадал компьютер");
@@ -71,8 +71,8 @@ public class GuessNumber {
     }
 
     private void printAllNumbers(Player player) {
-        for (int i : player.getNumbers()) {
-            System.out.print(i + " ");
+        for (int number : player.getNumbers()) {
+            System.out.print(number + " ");
         }
         System.out.println("");
     }
