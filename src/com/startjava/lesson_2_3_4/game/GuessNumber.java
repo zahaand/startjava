@@ -7,7 +7,6 @@ public class GuessNumber {
     private final Player player1;
     private final Player player2;
     private int randomNumber;
-    private boolean winner;
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
 
@@ -21,13 +20,11 @@ public class GuessNumber {
         System.out.println("Начало игры! У каждого игрока по 10 попыток!");
 
         for (int i = 0; i < 10; i++) {
-            makeMove(player1);
-            if (winner) {
+            if (makeMove(player1)) {
                 break;
             }
 
-            makeMove(player2);
-            if (winner) {
+            if (makeMove(player2)) {
                 break;
             }
         }
@@ -37,7 +34,6 @@ public class GuessNumber {
     }
 
     private void initGame() {
-        winner = false;
         player1.fill();
         player2.fill();
         player1.setTryCount(0);
@@ -45,15 +41,18 @@ public class GuessNumber {
         randomNumber = random.nextInt(100 + 1);
     }
 
-    private void makeMove(Player player) {
+    private boolean makeMove(Player player) {
         player.setNumber(inputNumber(player));
-        if (checkNumber(player)) {
-            winner = true;
-        }
         player.setTryCount(player.getTryCount() + 1);
+
+        if (checkNumber(player)) {
+            return true;
+        }
+
         if (player.getTryCount() == 10) {
             System.out.println("У " + player.getName() + " закончились попытки");
         }
+        return false;
     }
 
     private int inputNumber(Player player) {
@@ -63,7 +62,7 @@ public class GuessNumber {
 
     private boolean checkNumber(Player player) {
         if (player.getNumber() == randomNumber) {
-            System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " с " + (player.getTryCount() + 1) + " попытки");
+            System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " с " + (player.getTryCount()) + " попытки");
             return true;
         } else if (player.getNumber() > randomNumber) {
             System.out.println("Данное число больше того, что загадал компьютер");
