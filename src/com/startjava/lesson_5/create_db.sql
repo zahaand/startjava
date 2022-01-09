@@ -11,4 +11,5 @@ CREATE TABLE jaegers (
     status      BOOLEAN, 
     origin      TEXT, 
     launch      INTEGER, 
-    kaijuKill   INTEGER);
+    kaijuKill   INTEGER
+);
